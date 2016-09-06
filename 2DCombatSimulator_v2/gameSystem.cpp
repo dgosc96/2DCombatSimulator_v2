@@ -2,20 +2,17 @@
 
 
 
-gameSystem::gameSystem()
-{	
+gameSystem::gameSystem(){	
 	std::string pathName;
+	std::string defaultLvl = "default.txt";
 	bool breakLoop = false;
-	while (!breakLoop)
-	{
+	while (!breakLoop){
 		std::cout << "1. Load default level\n2. Load custom level\n3. Exit\n\nInput:";
-		switch (_getch())
-		{
+		switch (_getch()){
 		case '1':
 			system("cls");
-			if (_level->load("default.txt"))
-			{
-				perror("Error when loading default level file");
+			if (_level->load(defaultLvl)){
+				perror(defaultLvl.c_str());
 				std::cout << "\nPress any key to exit...\n";
 				_getch();
 				exit(1);
@@ -28,15 +25,13 @@ gameSystem::gameSystem()
 
 			std::cin >> pathName;
 
-			if (_level->load(pathName))
-			{
-				perror("Error when loading level file");
+			if (_level->load(pathName)){
+				perror(pathName.c_str());
 				std::cout << "\nPress any key to load default level...\n";
 				_getch();
 
-				if (_level->load("default.txt"))
-				{
-					perror("Error when loading default level file");
+				if (_level->load(defaultLvl)){
+					perror(defaultLvl.c_str());
 					std::cout << "\nPress any key to exit...\n";
 					_getch();
 					exit(1);
@@ -49,13 +44,9 @@ gameSystem::gameSystem()
 		default:
 			break;
 		}
-
-
 		system("cls");
 	}
-
 	system("cls");
-	
 }
 
 

@@ -4,9 +4,6 @@
 
 Level::Level()
 {
-
-
-
 }
 
 Level::~Level() {
@@ -17,7 +14,6 @@ Level::~Level() {
 			delete _armies[i][j];
 		}
 	}
-
 	delete _randomEngine;
 }
 
@@ -25,15 +21,9 @@ bool Level::load(std::string LevelPath)
 { 
 	std::ifstream LevelFile;
 	LevelFile.open(LevelPath);
+
 	if (LevelFile.fail())
-	{
-		
-		
 		return true;
-	}
-
-
-
 
 	std::uniform_int_distribution<int> randAdditionalHealth(0, 20);
 	std::uniform_int_distribution<int> randDefence(0, 10);
